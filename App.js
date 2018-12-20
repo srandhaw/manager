@@ -4,6 +4,7 @@ import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 import reducers from './src/reducers/index.js'
 import firebase from 'firebase'
+import LoginForm from './src/components/LoginForm'
 
 class App extends Component{
 
@@ -18,17 +19,13 @@ var config = {
     messagingSenderId: "67127488965"
   };
   firebase.initializeApp(config);
-  
+
   }
 
   render(){
     return(
       <Provider store = {createStore(reducers)}>
-      <View>
-      <Text>
-      Hello!
-      </Text>
-      </View>
+      <LoginForm/>
       </Provider>
     )
   }
