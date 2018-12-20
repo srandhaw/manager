@@ -1,49 +1,37 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, {Component} from 'react'
+import {View,Text} from 'react-native'
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
+import reducers from './src/reducers/index.js'
+import firebase from 'firebase'
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+class App extends Component{
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+  componentWillMount(){
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+var config = {
+    apiKey: "AIzaSyC-5jSGUdAOqMxU0Gohc92Yh97URrEFTDQ",
+    authDomain: "manager-8504a.firebaseapp.com",
+    databaseURL: "https://manager-8504a.firebaseio.com",
+    projectId: "manager-8504a",
+    storageBucket: "manager-8504a.appspot.com",
+    messagingSenderId: "67127488965"
+  };
+  firebase.initializeApp(config);
+  
+  }
+
+  render(){
+    return(
+      <Provider store = {createStore(reducers)}>
+      <View>
+      <Text>
+      Hello!
+      </Text>
       </View>
-    );
+      </Provider>
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+export default App
