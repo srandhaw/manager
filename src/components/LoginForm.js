@@ -3,13 +3,17 @@ import Card from './Card.js'
 import CardSection from './CardSection.js'
 import Button from './Button.js'
 import Input from './Input.js'
-import {emailChange} from '../actions'
+import {emailChange,passwordChange} from '../actions'
 import {connect} from 'react-redux'
 
 class LoginForm extends Component{
 
     onEmailChange(text){
 this.props.emailChange(text)
+    }
+
+    onPasswordChange(text){
+this.props.passwordChange(text)
     }
 
     render(){
@@ -29,6 +33,8 @@ this.props.emailChange(text)
              isSecured
              label = "Password"
              placeholder = "password"
+             onChangeText = {this.onPasswordChange.bind(this)}
+             value = {this.props.password}
              />
              </CardSection>
 
@@ -43,7 +49,8 @@ this.props.emailChange(text)
 }
 const mapStateToProps=(state)=>{
 return{
-    email: state.auth.email
+    email: state.auth.email,
+    password: state.auth.password,
 }
 }
-export default connect(mapStateToProps,{emailChange})(LoginForm)
+export default connect(mapStateToProps,{emailChange,passwordChange})(LoginForm)
