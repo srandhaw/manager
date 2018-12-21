@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import {View,Text} from 'react-native'
 import {Provider} from 'react-redux'
-import {createStore} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
 import reducers from './src/reducers/index.js'
 import firebase from 'firebase'
 import LoginForm from './src/components/LoginForm'
+import ReduxThunk from 'redux-thunk'
 
 class App extends Component{
 
@@ -24,7 +24,7 @@ var config = {
 
   render(){
     return(
-      <Provider store = {createStore(reducers)}>
+      <Provider store = {createStore(reducers,{},applyMiddleware(ReduxThunk))}>
       <LoginForm/>
       </Provider>
     )
