@@ -3,6 +3,7 @@ import Card from './Card.js'
 import CardSection from './CardSection.js'
 import Button from './Button.js'
 import Input from './Input.js'
+import Spinner from './Spinner.js'
 import {View,Text} from 'react-native'
 import {emailChange,passwordChange,loginUser} from '../actions'
 import {connect} from 'react-redux'
@@ -34,6 +35,18 @@ return(
         }
     }
 
+    renderButton(){
+        if(this.props.loading){
+           return <Spinner size = 'large'/>
+        }
+        else{
+            return(<Button onPress = {this.onButtonPress.bind(this)}>
+             Login
+             </Button>)
+
+        }
+    }
+
     render(){
         return(
             <Card>
@@ -58,9 +71,8 @@ return(
 
 {this.renderError()}
              <CardSection>
-             <Button onPress = {this.onButtonPress.bind(this)}>
-             Login
-             </Button>
+             {this.renderButton()}
+
              </CardSection>
             </Card>
         )
@@ -71,6 +83,7 @@ return{
     email: state.auth.email,
     password: state.auth.password,
     error: state.auth.error,
+    loading: state.auth.loading,
 }
 }
 export default connect(mapStateToProps,{emailChange,passwordChange,loginUser})(LoginForm)

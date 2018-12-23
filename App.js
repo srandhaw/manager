@@ -5,6 +5,7 @@ import reducers from './src/reducers/index.js'
 import firebase from 'firebase'
 import LoginForm from './src/components/LoginForm'
 import ReduxThunk from 'redux-thunk'
+import {View} from 'react-native'
 
 class App extends Component{
 
@@ -25,10 +26,19 @@ var config = {
   render(){
     return(
       <Provider store = {createStore(reducers,{},applyMiddleware(ReduxThunk))}>
+      <View style = {{flex: 1}}>
       <LoginForm/>
+      </View>
       </Provider>
     )
   }
 }
 
 export default App
+
+const styles = {
+    mainView:{
+      marginTop: 10,
+      flex: 1,
+    }
+}
