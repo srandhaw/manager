@@ -49,7 +49,8 @@ return(
 
     render(){
         return(
-            <Card>
+            <View style = {{marginTop: 60}}>
+            <Card >
              <CardSection>
              <Input
              label = "Email"
@@ -75,6 +76,7 @@ return(
 
              </CardSection>
             </Card>
+            </View>
         )
     }
 }
