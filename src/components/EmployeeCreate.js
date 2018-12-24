@@ -1,10 +1,9 @@
 import React,{Component} from 'react'
-import {View,Text} from 'react-native'
+import {View,Text, Picker} from 'react-native'
 import Card from './Card.js'
 import CardSection from './CardSection.js'
 import Button from './Button.js'
 import Input from './Input.js'
-import {Picker} from 'react-native'
 import {connect} from 'react-redux'
 import {employeeUpdate} from '../actions'
 
@@ -32,10 +31,13 @@ class EmployeeCreate extends Component{
             />
             </CardSection>
 
-            <CardSection>
+            <CardSection style = {{flexDirection: 'column'}}>
+
+            <Text style = {styles.pickerTextStyle}>
+            Shift
+            </Text>
 
             <Picker 
-            style = {{flex:1}}
             selectedValue = {this.props.shift}
             onValueChange = {day => this.props.employeeUpdate({prop: "shift",value: day})}
             > 
@@ -62,6 +64,13 @@ class EmployeeCreate extends Component{
             </Card>
             </View>
         )
+    }
+}
+
+const styles = {
+    pickerTextStyle : {
+fontSize: 18,
+paddingLeft: 20,
     }
 }
 
