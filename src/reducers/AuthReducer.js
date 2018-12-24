@@ -1,7 +1,6 @@
 import {EMAIL_CHANGED,PASSWORD_CHANGED,LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER} from '../actions/types.js'
 
 export default (state='', action)=>{
-    console.log(action.type);
     
     switch(action.type){
         case EMAIL_CHANGED:
