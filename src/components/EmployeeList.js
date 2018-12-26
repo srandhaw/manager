@@ -8,9 +8,7 @@ import _ from 'lodash'
 class EmployeeList extends Component{
 
  componentDidMount() {
-   console.log();
-   
-    this.props.employeeFetch();
+   this.props.employeeFetch();
   }
 
   renderRow(employee){
@@ -36,6 +34,9 @@ const mapStateToProps = state => {
   const employees = _.map(state.employeeReducer, (val, uid) => {
     return { ...val, uid };
   });
+
+  console.log(employees);
+  
 
  
 return { employees };

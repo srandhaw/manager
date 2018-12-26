@@ -5,7 +5,7 @@ import Card from './Card.js'
 import EmployeeForm from './EmployeeForm'
 import {View} from 'react-native'
 import {connect} from 'react-redux'
-import {employeeUpdate} from '../actions'
+import {employeeUpdate, employeeSave} from '../actions'
 import _ from 'lodash'
 
 class EmployeeEdit extends Component{
@@ -17,7 +17,9 @@ class EmployeeEdit extends Component{
     }
 
     onButtonPress(){
-
+        const {name, phone, shift} = this.props
+this.props.employeeSave({name,phone,shift, uid: this.props.employee.uid})
+     
     }
 
     render(){
@@ -44,4 +46,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{employeeUpdate})(EmployeeEdit)
+export default connect(mapStateToProps,{employeeUpdate,employeeSave})(EmployeeEdit)
