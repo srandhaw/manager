@@ -13,7 +13,7 @@ class EmployeeList extends Component{
 
   renderRow(employee){
 return (
-<ListItem employee = {employee.item.name}/>
+<ListItem employee = {employee.item}/>
 )
 }
  
